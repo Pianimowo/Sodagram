@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tuyu | Store</title>
+    <meta name="description" content="THis is the description" />
+    <link rel="stylesheet" href="/public/css/styles.css" />
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="nav main-nav">
+        <!--Section creates a navigation box-->
+        <ul>
+          <!--Unordered list (bullet points, whereas ordered list are numbered(ol))-->
+          <li><a href="Index.html">HOME</a></li>
+          <!--List item, used only inside ul and ol-->
+          <li><a href="Store.html">STORE</a></li>
+          <li><a href="About.html">ABOUT</a></li>
+        </ul>
+      </nav>
+      <!-- <hr> Empty element, provides a horizantal line/rule -->
+      <h1 class="band-name band-name-large">Tuyu</h1>
+      <!--heading element, h1-6 for sizes-->
+    </header>
+
+    <section class="container content-section">
+      <h2 class="section-header">Music</h2>
+
+      <div class="shop-items">
+        <div class="shop-item">
+          <span class="shop-item-title">Its Raining After All</span>
+          <img
+            src="images/Raining after All.jpeg"
+            alt="Album 1"
+            class="shop-item-img"
+          />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$12.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-item">
+          <span class="shop-item-title">I'll put you in misery</span>
+          <img src="images/Album 2.jpeg" alt="Album 2" class="shop-item-img" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$12.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-item">
+          <span class="shop-item-title">Under Mentallity</span>
+          <img src="images/Album 3.jpeg" alt="Album 3" class="shop-item-img" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$12.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-item">
+          <span class="shop-item-title">Its Raining After All</span>
+          <img src="images/Song 1.jpeg" alt="Song 1" class="shop-item-img" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$8.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-item">
+          <span class="shop-item-title">Loser Girl</span>
+          <img src="images/Song 2.jpeg" alt="Song 2" class="shop-item-img" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$8.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-item">
+          <span class="shop-item-title">Faithful Hachi</span>
+          <img src="images/Song 5.jpeg" alt="=Song 5" class="shop-item-img" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$8.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container content-section">
+      <h2 class="section-header">Merch</h2>
+
+      <div class="shop-items">
+        <div class="shop-item">
+          <span class="shop-item-title">Umbrella</span>
+          <img
+            src="images/Umbrella.jpeg"
+            alt="Umbrella"
+            class="shop-item-img"
+          />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$20.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="shop-item">
+          <span class="shop-item-title">T-shirt</span>
+          <img src="images/T-shirt.webp" alt="T-shirt" class="shop-item-img" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$15.99</span>
+            <button role="button" class="btn shop-item-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="container content-section">
+      <h2 class="section-header">Cart</h2>
+      <div class="cart-row">
+        <span class="cart-item cart-header cart-column">Item</span>
+        <span class="cart-price cart-header cart-column">Price</span>
+        <span class="cart-quantity cart-header cart-column">Quantity</span>
+      </div>
+
+      <div class="items">
+        <div class="cart-row">
+          <div class="cart-item cart-column">
+            <img
+              src="Images/Raining after All.jpeg"
+              alt=""
+              width="100px"
+              class="cart-item-img"
+            />
+            <span class="cart-item-title">Raining after All</span>
+          </div>
+          <span class="cart-price cart-column">$8.99</span>
+          <div class="cart-quantity cart-column">
+            <input type="number" value="1" class="cart-quantity-input" />
+            <button class="btn btn-danger">Remove</button>
+          </div>
+        </div>
+
+        <div class="cart-row">
+          <div class="cart-item cart-column">
+            <img
+              src="Images/Umbrella.jpeg"
+              alt=""
+              width="100"
+              class="cart-item-img"
+            />
+            <span class="cart-item-title">Umbrella</span>
+          </div>
+          <span class="cart-price cart-column">$20.99</span>
+          <div class="cart-quantity cart-column">
+            <input type="number" value="1" class="cart-quantity-input" />
+            <button class="btn btn-danger">Remove</button>
+          </div>
+        </div>
+      </div>
+      <div class="cart-total">
+        <strong class="cart-total-title">Total</strong>
+        <span class="cart-total-price">$29.98</span>
+      </div>
+
+        <button type="button" class="btn tour-btn btn-purchase">Purchase</button>
+    </section>
+
+    <footer class="main-footer">
+      <div class="container main-footer-container">
+        <h3 class="band-name">Tuyu</h3>
+        <ul class="nav footer-nav">
+          <!--unordered list-->
+          <li>
+            <a href="https://www.youtube.com/@TUYU_official" target="_blank"
+              ><img src="Images/youtube.jpeg" alt="youtube logo"
+            /></a>
+          </li>
+          <!--List elements-->
+          <li>
+            <a
+              href="https://open.spotify.com/artist/0PHf0oiic0xAnCrRuLTtHl"
+              target="_blank"
+              ><img src="Images/spotify.png" alt="spotify logo"
+            /></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/TUYU_official" target="_blank"
+              ><img src="Images/twitter.png" alt="twitter logo"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
