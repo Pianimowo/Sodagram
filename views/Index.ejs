@@ -6,99 +6,12 @@
     <header class="main-header">
       <!--Section provides heading/creates a box -->
       <%- include('layouts/nav'); -%>
-      <h1 class="band-name band-name-large">Tuyu</h1>
-      <!--heading element, h1-6 for sizes-->
-      <div class="container container-center">
-        <button class="btn btn-header" type="button">
-          Get our Lastest Album
-        </button>
-        <!--Button element that the user can click on-->
-      </div>
-
-      <button class="btn btn-header btn-play" type="button">&#9658;</button>
+      <h1 class="band-name band-name-large">Sodagram</h1>
     </header>
 
-    <section class="content-section container">
-      <h2 class="section-header">Tours</h2>
-      <div>
-        <!--Meaningless element, used here to ensure the rows do not end up on the same line-->
+    
 
-        <div class="tour-row">
-          <!--INside div ensures that the text in each row stays in their respective rows-->
-          <span class="tour-item tour-date">January 14th</span>
-          <!--Strong tag bolds the elements inside-->
-          <!-- &lt;&gt; Creates some spacing -->
-          <span class="tour-item tour-city">Osaka, Japan</span>
-          <!--Span keeps eveerything in a row, ensures no line break; opposite of a div-->
-          <span class="tour-item tour-arena">Zepp Namba</span>
-          <button type="button" class="btn tour-item tour-btn">
-            Buy Tickets
-          </button>
-        </div>
 
-        <div class="tour-row">
-          <span class="tour-item tour-date">January 18th</span>
-          <span class="tour-item tour-city">Nagoya, Japan</span>
-          <span class="tour-item tour-arena">Zepp Nagoya</span>
-          <button type="button" class="btn tour-btn">Buy Tickets</button>
-        </div>
-
-        <div class="tour-row">
-          <span class="tour-item tour-date">January 20th</span>
-          <span class="tour-item tour-city">Fukuoka, Japan</span>
-          <span class="tour-item tour-arena">Zepp Fukuoka</span>
-          <button type="button" class="btn tour-btn">Buy Tickets</button>
-        </div>
-
-        <div class="tour-row">
-          <span class="tour-item tour-date">January 21st</span>
-          <span class="tour-item tour-city">Hiroshima, Japan</span>
-          <span class="tour-item tour-arena">Blue Live 広島</span>
-          <button type="button" class="btn tour-btn">Buy Tickets</button>
-        </div>
-
-        <div class="tour-row">
-          <span class="tour-item tour-date">January 27th</span>
-          <span class="tour-item tour-city">Sendai, Japan</span>
-          <span class="tour-item tour-arena">Sendai Gigs</span>
-          <button type="button" class="btn tour-btn">Buy Tickets</button>
-        </div>
-
-        <div class="tour-row">
-          <span class="tour-item tour-date">Febuary 4th</span>
-          <span class="tour-item tour-city">Tokyo, Japan</span>
-          <span class="tour-item tour-arena">Zepp Haneda</span>
-          <button type="button" class="btn tour-btn">Buy Tickets</button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="main-footer">
-      <!--Defines a section, always at the bottom of the page-->
-      <div class="container main-footer-container">
-        <h3 class="band-name">Tuyu</h3>
-        <ul class="nav footer-nav">
-          <!--unordered list-->
-          <li>
-            <a href="https://www.youtube.com/@TUYU_official" target="_blank"
-              ><img src="Images/youtube.jpeg" alt="youtube logo"
-            /></a>
-          </li>
-          <!--List elements-->
-          <li>
-            <a
-              href="https://open.spotify.com/artist/0PHf0oiic0xAnCrRuLTtHl"
-              target="_blank"
-              ><img src="Images/spotify.png" alt="spotify logo"
-            /></a>
-          </li>
-          <li>
-            <a href="https://twitter.com/TUYU_official" target="_blank"
-              ><img src="Images/twitter.png" alt="twitter logo"
-            /></a>
-          </li>
-        </ul>
-      </div>
-    </footer>
+    <%- include('layouts/footer'); -%>
   </body>
 </html>

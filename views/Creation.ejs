@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sodagram | Creation</title>
+        <meta name="description" content="This is the description" />
+
+        <link rel="stylesheet" href="public/css/styles.css" />
+    </head>
+
+    <body>
+        <div class="login-container">
+            <ul class="login-ul">
+                <div class="login-menu">
+                    <h2 class="Login-text-big">Create New!</h2>
+
+                    <div class="Name-boxes">
+                        <div class="Input-boxes Input-Name-boxes">
+                            <h5 class="Login-text">First name</h5>
+                            <input type="text" placeholder="John" class="Login-Input Name-Input">
+                        </div>
+                        <div class="Input-boxes Input-Name-boxes">
+                            <h5 class="Login-text">Last name</h5>
+                            <input type="text" placeholder="Doe" class="Login-Input Name-Input">
+                        </div>
+                    </div>
+                    <div class="Input-boxes">
+                        <h4 class="Login-text">Email</h4>
+                        <input type="text" placeholder="Example@gmail.com" class="Login-Input">
+                    </div>
+                   
+                    <div class="Input-boxes">
+                        <h4 class="Login-text">Password</h4>
+                        <input type="text"  class="Login-Input">
+                    </div>
+
+                    <div class="Input-boxes">
+                        <h4 class="Login-text">Reconfirm Password</h4>
+                        <input type="text"  class="Login-Input">
+                    </div>
+
+                    <div>
+                        <button class="Login-button" onclick="createNew()">Enter</button>
+                    </div>
+                </div>
+                
+                <div> 
+                    <a href="Index.html"><button type="button" class="creation-button" id="guest-button">Continue as Guest</button></a>
+                </div>
+
+            </ul>
+        </div>
+        
+
+        <%- include('layouts/footer'); -%>
+    </body>
+    <script>
+        function createNew(){
+
+        }
+    </script>
+</html>
