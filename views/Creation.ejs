@@ -8,41 +8,43 @@
     </head>
 
     <body>
-        <div class="login-container">
+        <div class="login-container creation-container">
             <ul class="login-ul">
-                <div class="login-menu">
-                    <h2 class="Login-text-big">Create New!</h2>
+                <form action="/Create" method="post" id ="creationForm">
+                    <div class="login-menu">
+                        <h2 class="Login-text-big">Create New!</h2>
 
-                    <div class="Name-boxes">
-                        <div class="Input-boxes Input-Name-boxes">
-                            <h5 class="Login-text">First name</h5>
-                            <input type="text" placeholder="John" class="Login-Input Name-Input">
+                        <div class="Name-boxes">
+                            <div class="Input-boxes Input-Name-boxes">
+                                <h5 class="Login-text">First name</h5>
+                                <input type="text" placeholder="John" class="Login-Input Name-Input" name="first_name" id="first_name">
+                            </div>
+                            <div class="Input-boxes Input-Name-boxes">
+                                <h5 class="Login-text">Last name</h5>
+                                <input type="text" placeholder="Doe" class="Login-Input Name-Input" name="last_name" id="last_name">
+                            </div>
                         </div>
-                        <div class="Input-boxes Input-Name-boxes">
-                            <h5 class="Login-text">Last name</h5>
-                            <input type="text" placeholder="Doe" class="Login-Input Name-Input">
+
+                        <div class="Input-boxes">
+                            <h4 class="Login-text">Email</h4>
+                            <input type="text" placeholder="Example@gmail.com" class="Login-Input" name="email" id="email">
                         </div>
-                    </div>
-                    <div class="Input-boxes">
-                        <h4 class="Login-text">Email</h4>
-                        <input type="text" placeholder="Example@gmail.com" class="Login-Input">
-                    </div>
                    
-                    <div class="Input-boxes">
-                        <h4 class="Login-text">Password</h4>
-                        <input type="text"  class="Login-Input">
-                    </div>
+                        <div class="Input-boxes">
+                            <h4 class="Login-text">Password</h4>
+                            <input type="password"  class="Login-Input" name="password1" id="password1">
+                        </div>
 
-                    <div class="Input-boxes">
-                        <h4 class="Login-text">Reconfirm Password</h4>
-                        <input type="text"  class="Login-Input">
-                    </div>
+                        <div class="Input-boxes">
+                            <h4 class="Login-text">Reconfirm Password</h4>
+                            <input type="password"  class="Login-Input" name="password2" id="password2">
+                        </div>
 
-                    <div>
-                        <button class="Login-button" onclick="createNew()">Enter</button>
+                        <div>
+                            <button class="Login-button" type="submit" id="creation-button">Enter</button>
+                        </div>
                     </div>
-                </div>
-                
+                </form>
                 <div> 
                     <a href="Index.html"><button type="button" class="creation-button" id="guest-button">Continue as Guest</button></a>
                 </div>
@@ -54,8 +56,51 @@
         <%- include('layouts/footer'); -%>
     </body>
     <script>
-        function createNew(){
+        document.getElementById("creationForm").addEventListener("submit", (event) => {
+            event.preventDefault();
 
-        }
+            const password1 = document.getElementById("password1").value;
+            const password2 = document.getElementById("password2").value;
+            const first_name = document.getElementById("first_name").value;
+            const last_name = document.getElementById("last_name").value;
+            const email = document.getElementById("email").value;
+            console.log("HEllo");
+
+            if (password1 === password2 && email!=""){
+                fetch('/Create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password1, password2, first_name, last_name })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.text === "Account created!"){
+                        window.alert("Account Created! Please login with your new account!");
+                        window.location = "/Login.HTML";
+                    }
+                    else{
+                        window.alert("Email already in use! Please try logging in");
+                        window.location = "/Login.HTML";
+                    }
+                })
+            }
+            else{
+                fetch('/Create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password1, password2, first_name, last_name })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    window.alert("The two passwords do not match or invalid email! Please try again");
+                    document.getElementById("password1").value = "";
+                    document.getElementById("password2").value = "";
+                });
+            }
+        });
     </script>
 </html>

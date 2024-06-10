@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <%- include('layouts/header'); -%>
+
+  <body>
+    <header class="main-header">
+      <!--Section provides heading/creates a box -->
+      <%- include('layouts/nav'); -%>
+      <h1 class="band-name band-name-large">Sodagram</h1>
+    </header>
+
+    <div class="logout-button-div" style="margin-top: 2%">
+      <button
+        type="button"
+        class="creation-button logout-button"
+        id="create-button"
+      >
+        Create
+      </button>
+    </div>
+
+    <!-- The Modal -->
+    <div id="createModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h1 class="dispense-text-modal">Build your own drink!</h1>
+
+        <div class="create-drinks">
+          <div class="square-side">
+            <div class="square" id="top-square">
+              <p id="top-text" class="top-text"></p>
+            </div>
+            <div class="square" id="bottom-square">
+              <p id="bottom-text" class="top-text"></p>
+            </div>
+          </div>
+
+          <div class="button-side">
+            <form action="/Drink" method="post" id="dispenseOwnDrink">
+              <div class="top-drink">
+                <label>Choose the top drink</label>
+                <select name="drink-opt-top" id="drink-opt-top" class="drink-opt-top">
+                  <option value="">Please choose an drink</option>
+                  <option value="Coke">Coke</option>
+                  <option value="MtnDew">Mountain Dew</option>
+                  <option value="Fanta">Fanta</option>
+                  <option value="Sprite">Sprite</option>
+                </select>
+                <select name="flavor-opt-top" id="flavor-opt-top" class="flavor-opt-top">
+                  <option value="">Please choose an flavor</option>
+                  <option value="Peach">Peach</option>
+                  <option value="Mango">Mango</option>
+                  <option value="Pineapple">Pineapple</option>
+                  <option value="Normal">Normal</option>
+                </select>
+              </div>
+              <div class="bottom-drink">
+                <label>Choose the bottom drink</label>
+                <select name="drink-opt-bottom" id="drink-opt-bottom" class="drink-opt-bottom">
+                  <option value="">Please choose an drink</option>
+                  <option value="Coke">Coke</option>
+                  <option value="MtnDew">Mountain Dew</option>
+                  <option value="Fanta">Fanta</option>
+                  <option value="Sprite">Sprite</option>
+                </select>
+                <select name="flavor-opt-bottom" id="flavor-opt-bottom" class="flavor-opt-bottom">
+                  <option value="">Please choose an flavor</option>
+                  <option value="Peach">Peach</option>
+                  <option value="Mango">Mango</option>
+                  <option value="Pineapple">Pineapple</option>
+                  <option value="Normal">Normal</option>
+                </select>
+              </div>
+              <button type="submit">Dispense!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="logoutModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content modal-content-logout">
+        <div class="logout-button-div">
+          <button
+            type="button"
+            class="creation-button logout-button"
+            id="logout-button"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <%- include('layouts/footer'); -%>
+  </body>
+
+  <script>
+    var createModal = document.getElementById("createModal");
+    var createBtn = document.getElementById("create-button");
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+      createModal.style.display = "none";
+    };
+
+    createBtn.onclick = function () {
+      createModal.style.display = "block";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == createModal) {
+        createModal.style.display = "none";
+      }
+    };
+
+    var logoutModal = document.getElementById("logoutModal");
+    var logoutBtn = document.getElementById("account");
+
+    window.onclick = function (event) {
+      if (event.target == logoutModal) {
+        logoutModal.style.display = "none";
+      }
+    };
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      document.getElementById("My").style.visibility = "visible";
+      document.getElementById("account").addEventListener("click", () => {
+        logoutModal.style.display = "block";
+      });
+    } else {
+      document.getElementById("My").style.visibility = "hidden";
+      document.getElementById("account").addEventListener("click", () => {
+        window.location = "/Login.HTML";
+      });
+    }
+
+    document.getElementById("logout-button").addEventListener("click", () => {
+      var txt;
+      if (confirm("Do you wish to logout?")) {
+        txt = "Yes";
+        localStorage.removeItem("token");
+        window.location = "/Index.HTML";
+      } else {
+        txt = "No";
+        modal.style.display = "none";
+      }
+    });
+
+
+    document.querySelector(".flavor-opt-bottom").addEventListener("change", (event) => {
+      var flavours = document.querySelector(".flavor-opt-bottom").value;
+      console.log(flavours)
+      if(flavours === "Peach" ){
+        document.getElementById("bottom-square").style.backgroundColor = "#ffb0f8";
+      }
+      else if(flavours === "Mango"){
+        document.getElementById("bottom-square").style.backgroundColor = "#ffd2a2";
+      }
+      else if(flavours === "Pineapple"){
+        document.getElementById("bottom-square").style.backgroundColor = "#f7ffb0";
+      }
+      else if(flavours === "Normal"){
+        document.getElementById("bottom-square").style.backgroundColor = "#333";
+      }
+    });
+
+    document.querySelector(".flavor-opt-top").addEventListener("change", (event) => {
+      var flavours = document.querySelector(".flavor-opt-top").value;
+      console.log(flavours)
+      if(flavours === "Peach" ){
+        document.getElementById("top-square").style.backgroundColor = "#ffb0f8";
+      }
+      else if(flavours === "Mango"){
+        document.getElementById("top-square").style.backgroundColor = "#ffd2a2";
+      }
+      else if(flavours === "Pineapple"){
+        document.getElementById("top-square").style.backgroundColor = "#f7ffb0";
+      }
+      else if(flavours === "Normal"){
+        document.getElementById("top-square").style.backgroundColor = "#333";
+      }
+    });
+
+    document.querySelector(".drink-opt-bottom").addEventListener("change", (event) => {
+      var drinks = document.querySelector(".drink-opt-bottom").value;
+      console.log(drinks)
+      if(drinks === "Coke" ){
+        document.getElementById("bottom-text").innerText = "Coke";
+      }
+      else if(drinks === "MtnDew"){
+        document.getElementById("bottom-text").innerText = "Mountain Dew";
+      }
+      else if(drinks === "Fanta"){
+        document.getElementById("bottom-text").innerText = "Fanta";
+      }
+      else if(drinks === "Sprite"){
+        document.getElementById("bottom-text").innerText = "Sprite";
+      }
+    });
+
+    document.querySelector(".drink-opt-top").addEventListener("change", (event) => {
+      var drinks = document.querySelector(".drink-opt-top").value;
+      console.log(drinks)
+      if(drinks === "Coke" ){
+        document.getElementById("top-text").innerText = "Coke";
+      }
+      else if(drinks === "MtnDew"){
+        document.getElementById("top-text").innerText = "Mountain Dew";
+      }
+      else if(drinks === "Fanta"){
+        document.getElementById("top-text").innerText = "Fanta";
+      }
+      else if(drinks === "Sprite"){
+        document.getElementById("top-text").innerText = "Sprite";
+      }
+    });
+
+    document
+      .getElementById("dispenseOwnDrink")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        const topDrink = document.querySelector(".flavor-opt-top").value;
+        const topFlavour = document.querySelector(".flavor-opt-top").value;
+        const botDrink= document.querySelector(".drink-opt-bottom").value;
+        const botFlavour = document.querySelector(".flavor-opt-bottom").value;
+
+        fetch("/Drink", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({topDrink, botDrink, topFlavour, botFlavour}),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            window.alert(data.text);
+            createModal.style.display = "none";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+    });
+
+
+
+  </script>
+</html>

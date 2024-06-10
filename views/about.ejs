@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <%- include('layouts/header'); -%>
+
+  <body>
+    <header class="main-header">
+      <!--Section provides heading/creates a box -->
+      <%- include('layouts/nav'); -%>
+      <h1 class="band-name band-name-large">Sodagram</h1>
+    </header>
+
+    <img
+      src="images/t-tong.jpeg"
+      alt="something went wrong!"
+      class="profile-images"
+    />
+    <p class="about-us-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
+      asperiores et, accusantium omnis porro necessitatibus id laborum
+      reprehenderit, delectus quod repellendus iusto consequatur iste? Doloribus
+      assumenda, earum vitae est dolorem fugiat eligendi non quae maiores
+      delectus dolore at quasi, eaque dicta, molestias iusto rem quod quibusdam
+      impedit. Eius, repudiandae. Cumque quibusdam dolorem exercitationem
+      laboriosam cupiditate corporis possimus! Perferendis eveniet non impedit
+      maiores. Libero aperiam cumque architecto. Asperiores voluptatum debitis
+      expedita corporis rerum magnam cum itaque.
+    </p>
+    <img
+      src="images/ethan.jpeg"
+      alt="something went wrong!"
+      class="profile-images"
+    />
+    <p class="about-us-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+      deserunt eos non aut cupiditate, repudiandae, distinctio libero recusandae
+      nemo expedita asperiores debitis officiis vitae odit numquam ipsa nulla
+      dignissimos unde! Neque provident aliquid recusandae, repellat dolores
+      doloremque corrupti veniam esse maxime autem eveniet ea sed a. Amet harum
+      quia quam et illum eius tempora reiciendis aut odio laborum, cum error
+      animi, accusamus provident ipsa soluta. Saepe deleniti odit modi molestiae
+      fugiat accusantium ipsum optio error.
+    </p>
+    <img
+      src="images/trevor.jpeg"
+      alt="something went wrong!"
+      class="profile-images"
+    />
+    <p class="about-us-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam fugit non
+      aliquid nemo, ipsa necessitatibus cum, quisquam vel praesentium, facere
+      tempora nobis velit sit? Deleniti molestias consequatur magni
+      exercitationem ad, facere molestiae nisi voluptas placeat porro labore, a
+      in facilis eius cum fugiat odit aliquid omnis numquam. Expedita ab alias,
+      iure quo tempora, sequi eaque atque, magni vitae obcaecati tempore
+      officiis aut voluptates architecto minima amet non esse laboriosam eius.
+      Ab quibusdam quo quidem eius!
+    </p>
+    <img
+      src="images/Daniel.jpeg"
+      alt="something went wrong!"
+      class="profile-images"
+    />
+    <p class="about-us-text2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque recusandae
+      maxime qui commodi dolore ut accusantium possimus nihil, sit sed provident
+      unde similique illum aliquam aspernatur doloremque, et eum earum. Totam
+      neque ipsa fuga quam, dicta a nihil asperiores adipisci iure veniam,
+      nesciunt, maiores animi officia cupiditate veritatis repudiandae
+      temporibus? Deleniti corrupti consequatur voluptatum ratione quibusdam
+      vitae doloribus veniam unde expedita quo voluptatibus voluptatem labore
+      pariatur nesciunt suscipit, animi molestiae est qui, accusamus,
+      exercitationem accusantium.
+    </p>
+
+    <div id="logoutModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content modal-content-logout">
+        <div class="logout-button-div">
+          <button
+            type="button"
+            class="creation-button logout-button"
+            id="logout-button"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <%- include('layouts/footer'); -%>
+  </body>
+
+  <script>
+    var logoutModal = document.getElementById("logoutModal");
+    var logoutBtn = document.getElementById("account");
+
+    window.onclick = function (event) {
+      if (event.target == logoutModal) {
+        logoutModal.style.display = "none";
+      }
+    };
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      document.getElementById("account").addEventListener("click", () => {
+        logoutModal.style.display = "block";
+      });
+    } else {
+      document.getElementById("account").addEventListener("click", () => {
+        window.location = "/Login.HTML";
+      });
+    }
+
+    document.getElementById("logout-button").addEventListener("click", () => {
+      var txt;
+      if (confirm("Do you wish to logout?")) {
+        txt = "Yes";
+        localStorage.removeItem("token");
+        window.location = "/Index.HTML";
+      } else {
+        txt = "No";
+        logoutModal.style.display = "none";
+      }
+    });
+  </script>
+</html>

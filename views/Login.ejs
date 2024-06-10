@@ -1,45 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sodagram | Login</title>
-        <meta name="description" content="This is the description" />
+  <head>
+    <title>Sodagram | Login</title>
+    <meta name="description" content="This is the description" />
 
-        <link rel="stylesheet" href="public/css/styles.css" />
-    </head>
+    <link rel="stylesheet" href="public/css/styles.css" />
+  </head>
 
-    <body>
-        <div class="login-container">
-            <ul class="login-ul">
-                <div class="login-menu">
-                    <h2 class="Login-text-big">Login</h2>
-                    <div class="Input-boxes">
-                        <h4 class="Login-text">Email</h4>
-                        <input type="text" placeholder="Example@gmail.com" class="Login-Input">
-                    </div>
-                   
-                    <div class="Input-boxes">
-                        <h4 class="Login-text">Password</h4>
-                        <input type="text"  class="Login-Input">
-                    </div>
-                    <div>
-                        <button class="Login-button" onclick="login()">Enter</button>
-                    </div>
-                </div>
-                <div> 
-                    <a href="Creation.html"><button type="button" class="creation-button" id="create-button">Create New</button></a>
-                </div>
-                <div> 
-                    <a href="Index.html"><button type="button" class="creation-button" id="guest-button">Continue as Guest</button></a>
-                </div>
-                
-            </ul>
+  <body>
+    <div class="login-container">
+      <ul class="login-ul">
+        <form action="/Login" method="post" id="loginForm">
+          <div class="login-menu">
+            <h2 class="Login-text-big">Login</h2>
+            <div class="Input-boxes">
+              <h4 class="Login-text">Email</h4>
+              <input
+                type="text"
+                placeholder="Example@gmail.com"
+                class="Login-Input"
+                name="email"
+                id="email"
+              />
+            </div>
+
+            <div class="Input-boxes">
+              <h4 class="Login-text">Password</h4>
+              <input
+                type="password"
+                class="Login-Input"
+                name="password"
+                id="password"
+              />
+            </div>
+            <div>
+              <button class="Login-button" type="submit">Enter</button>
+            </div>
+          </div>
+        </form>
+        <div>
+          <a href="Creation.html"
+            ><button type="button" class="creation-button" id="create-button">
+              Create New
+            </button></a
+          >
         </div>
+        <div>
+          <a href="Index.html"
+            ><button type="button" class="creation-button" id="guest-button">
+              Continue as Guest
+            </button></a
+          >
+        </div>
+        <div id="message"></div>
+        <div id="protectedMessage"></div>
+      </ul>
+    </div>
 
-        <%- include('layouts/footer'); -%>
-    </body>
+    <%- include('layouts/footer'); -%>
+
     <script>
-        function login(){
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
 
-        }
+          fetch("/Login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("message").innerText = data.text;
+              if (data.token) {
+                localStorage.setItem("token", data.token);
+                window.location = "/Index.HTML";
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              document.getElementById("message").innerText =
+                "An error occurred";
+            });
+        });
     </script>
+  </body>
 </html>

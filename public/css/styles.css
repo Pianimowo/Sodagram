@@ -1,387 +1,490 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Metal+Mania");
 
-@font-face{
-    font-family: "HURTMOLD_"; /**/
-    src: url("Fonts/HURTM___.ttf");
-    font-weight: normal;
-    font-style: normal;
+@font-face {
+  font-family: "HURTMOLD_";
+  src: url("Fonts/HURTM___.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Adequate-ExtraLight";
-    src: url("Fonts/Adequate-ExtraLight.ttf");
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Adequate-ExtraLight";
+  src: url("Fonts/Adequate-ExtraLight.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
-
-*{
-    box-sizing: border-box;
-    font-family: Raleway; 
-    color: #777;
+* {
+  box-sizing: border-box;
+  font-family: Raleway;
+  color: #777;
 }
 
-html, body{
-    margin: 0px;
-    padding: 0px;
-    background-color: rgb(202, 255, 255);
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(251, 217, 238);
 }
 
-
-.main-header{
-    background-color: rgba(194, 255, 249, 0.675); /*Sets background color*/
-    background-image: url("Images/Banner.jpeg"); /* Sets background image */
-    background-blend-mode: multiply; /*Combines the image and banner*/
-    background-size: 68%; /*Sets the size of the background (50% works better for me as compared to cover*/
-    background-position: center;
-    padding-bottom: 30px;
+.main-header {
+  background-color: rgba(255, 184, 228, 0.675); /*Sets background color*/
+  padding-bottom: 30px;
+  max-height: 200px;
 }
-
-/*Navigation bar*/
-
-
-.main-nav li{
-    padding: 0 5%;
-}
-
-.main-nav{
-    text-align: center;
-    font-size: 1.15em;
-    font-weight: bold;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.main-nav li{
-    padding: 0 5%;
-    text-align: center; /**/
-}
-
-.nav ul{
-    margin: 0px;
-}
-
-.nav li{
-    display: inline;   
-}
-
-.nav a{
-    display: inline-block;
-    padding: 0.5em;
-    color:white;
-    text-decoration: none;
-}
-.nav a:hover{
-    background-color: rgba(255, 255, 255, 0.3);
-
-}
-
-
 
 /*Band Title*/
 
-.band-name{
-    text-align: center;
-    margin: 0;
-    font-size: 4em;
-    font-family: "HURTMOLD_";
-    font-weight: normal;
-    color: white;
+.band-name {
+  text-align: center;
+  margin: 0;
+  font-size: 4em;
+  font-family: "HURTMOLD_";
+  font-weight: normal;
+  color: rgb(95, 106, 100);
 }
 
-.band-name-large{
-    font-size: 9em;
+.band-name-large {
+  font-size: 5em;
 }
-
-
 
 /* content */
 
-.content-section{
-    margin: 1em;
+.main-footer {
+  background-color: rgb(247, 166, 216);
+  color: white;
+  padding: 0.25em 0;
+  bottom: 0%;
+  width: 100%;
+  position: fixed;
+  height: 10%;
 }
 
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5em;
+.main-footer-container {
+  display: inline-flex;
+  width: 90%;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-.section-header{
-    font-family: "Adequate-ExtraLight";
-    font-weight: 700;
-    color: #333;
-    text-align: center;
-    font-size: 2.5em;
+.main-footer-container ul {
+  flex-grow: 1;
+  text-align: end;
 }
 
-.about-band-image{
-    float: left;
-    height: 200px;
-    width: 200px;
-    margin: 15px;
-    border-radius: 50%;
+.contact-info {
+  display: inline;
+  margin: 0;
 }
 
-.main-footer{
-    background-color: rgb(166, 237, 248);
-    color: white;
-    padding: .25em 0;
+.footer-nav {
+  padding: 0 0.5em;
 }
 
-.main-footer-container{
-    display: flex;
-    align-items: left;
+/*New Stuff*/
+
+.login-ul {
+  padding: 10%;
+  margin: 0%;
 }
 
-.main-footer-container ul{
-    flex-grow: 1;
-    text-align: end;
+.login-container {
+  display: block;
+  text-align: center;
+  width: 30%;
+  margin: auto;
+  margin-top: 8%;
+  margin-bottom: 10%;
 }
 
-.footer-nav{
-    padding: 0 0.5em;
+.login-menu {
+  text-align: right;
+
+  border: #333 2px solid;
+  border-radius: 10px;
+  padding: 5%;
+  width: 100%;
+
+  color: #000;
 }
 
-.footer-nav img{
-    height: 50px;
-    width: 50px;
-    border-radius: 25%;
+.Login-text-big {
+  text-align: center;
+  color: #000;
+  margin-bottom: 0%;
 }
 
-
-.btn {
-    text-align: center;
-    vertical-align: middle ;
-    padding: 0.67em;
-    cursor: pointer;
+.Input-boxes {
+  margin-top: 10%;
 }
 
-.btn-header:hover{
-    background-color: rgba(113, 121, 116, 0.45);
-}
-.btn-header{
-    margin: 0.5em 15% 2em 15%;
-    color: white;
-    border: 2px solid rgb(220, 255, 243);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 0;
-    font-size: 1.5em;
-    font-weight: lighter;
-    padding-left: 2em;
-    padding-right: 2em;
+.Login-text {
+  text-align: left;
+  margin: 0%;
+  color: #333;
 }
 
-.btn-play{
-    display: block;
-    margin: 0 auto;
-    color: rgb(220, 255, 243);
-    font-size: 4em;
-    border-radius: 50%;
-    padding: 0;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-
+.Login-Input {
+  margin-top: 2.5%;
+  width: 100%;
+  border-radius: 5em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
-.tour-row{
-    border-bottom: 1px solid rgb(6, 61, 42);
-    padding-bottom: 1em;
-    margin: 1em;
-
+.Login-button {
+  margin-top: 10%;
+  width: 8em;
+  height: 2em;
+  border-radius: 2em;
 }
 
-.tour-row:last-child{
-    border-bottom: none;
+.creation-button {
+  margin-top: 10%;
+  width: 100%;
+  height: 3em;
+
+  border-radius: 3em;
 }
 
-.tour-item{
-    display: inline-block;
-    padding-right: 0.53em;
+.Name-boxes {
+  margin-top: 5%;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
-.tour-date{
-    color: #555;
-    font-weight: bold;
-    width: 15%;
-}
-
-.tour-city{
-    width: 24%;
-}
-
-.tour-arena{
-    width: 42%;
-}
-
-.tour-btn{
-    max-width: 19%;
-    color: rgb(255, 255, 255);
-    background-color: rgb(93, 223, 177);
-    border: none;
-    border-radius: 0.3em;
-    font-weight: bold;
-    display: inline-block;
-    padding-right: none;
-}
-
-.tour-btn:hover{
-    background-color: rgb(78, 175, 141);
-}
-
-
-.shop-item{
-    margin: 30px;
-
-}
-
-.shop-item-title{
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.5em;
-    color:#333;
-    margin-bottom: 15px;
-}
-
-.shop-item-img{
-    height: 250px;
-    width: 250px;
-}
-
-.shop-item-details{
-    display: flex;
-    align-items: center;
-    padding: 5px;
-}
-
-.shop-item-price{
-    flex-grow: 1;
-    color: #777;
-}
-
-.shop-item-btn{
-    color: rgb(255, 255, 255);
-    background-color: rgb(93, 223, 177);
-    border: none;
-    border-radius: 0.3em;
-    font-weight: bold;
-    display: inline-block;
-    padding-right: none;
-}
-
-.shop-item-btn:hover{
-    background-color: rgb(78, 175, 141);
-}
-
-.shop-items{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.cart-header{
-    font-weight:bold;
-    font-size: 1.2em;
-    color: #333;
-}
-
-.cart-column{
-    border-bottom: 1px solid black;
-    margin-right: 1.5em;
-    padding-bottom: 10px;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.cart-row{
-    display: flex;
-}
-
-.cart-item{
+.Input-Name-boxes {
+  text-align: left;
   width: 45%;
+  margin: 0%;
 }
 
-.cart-price{
-    width: 20%;
-    font-size: 1.2em;
-    color: #333;
+.Name-Input {
+  width: 100%;
+  display: inline;
+  margin-top: 5%;
 }
 
-.cart-quantity{
-    padding-right: 28%;
-    width: 28%;
-    border-bottom: 1px solid black;
+.creation-container {
+  margin-bottom: 5%;
 }
 
-.cart-item-title{
-    color: #333;
-    margin-left: 0.5em;
-    font-size: 1.2em;
+.dropdown {
+  display: inline-block;
+  position: relative;
 }
 
-.cart-item-img{
-    width: 105px;
-    height: 105px;
-    border-radius: 10px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 130%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: aquamarine;
 }
 
-.btn-danger{
-    color: white;
-    background: red;
-    border: none;
-    margin-left: 28%;
-    border-radius: 0.3em;
-    font-weight: bold;
+.dropdown:focus-within .dropdown-content {
+  display: block;
 }
 
-.btn-danger:hover{
-    background-color: darkred;
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
 }
 
-.cart-quantity-input{
-    height: 34px;
-    width: 50px;
-    border-radius: 5px;
-    border: 1px solid rgb(93, 223, 177);
-    background-color: rgb(166, 237, 248);
-    color: #333;
-    padding: none;
-    text-align: center;
-    font-size: 1.2em;
-    margin-right: 25px;
+.dropdown-content a:hover {
+  color: #ffffff;
+  background-color: #00a4bd;
 }
 
-.cart-row:last-child{
-    border-bottom: 1px solid black;
+.navbar {
+  width: 98%;
+  margin-top: 1%;
+  text-align: center;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.nav {
+  text-align: center;
+}
+.image-button {
+  width: 75px;
+  height: 75px;
+  border: 0px;
+  padding: 0%;
+  margin: 0%;
+  border-radius: 75px;
 }
 
-.cart-row:last-child .cart-column{
-    border:none;
+.button-image {
+  width: 75px;
+  height: 75px;
+  padding: 0%;
+  margin: 0%;
+  border: 0px;
+  border-radius: 75px;
 }
 
-.cart-total{
-    text-align: end;
-    margin-top: 10px;
-    margin-right: 10px;
-}
-.cart-total-title{
-    font-weight: bold;
-    font-size: 1.5em;
-    color: black;
-    margin-right: 20px;
+.dispense {
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
-.cart-total-price{
-    color: #333;
-    font-size: 1.1em;
+.peach_dispense {
+  width: 12em;
+  height: 5em;
+  background-color: #ffb0f8;
+  border: #333, 1px;
+  border-radius: 1em;
 }
 
-.btn-purchase{
-    display: block;
-    margin: 40px auto 80px auto;
-    font-size: 1.7em;
+.mango_dispense {
+  width: 12em;
+  height: 5em;
+  background-color: #ffd2a2;
+  border: #333, 1px;
+  border-radius: 1em;
+}
+
+.pineapple_dispense {
+  width: 12em;
+  height: 5em;
+  background-color: #f7ffb0;
+  border: #333, 1px;
+  border-radius: 1em;
+}
+
+.dispense-text-modal {
+  text-align: center;
+  margin: 0%;
+  margin-top: 5%;
+  height: 10%;
+  width: 100%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 2%;
+  margin-top: 0%;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+/* The Close Button */
+.close {
+  color: #666666;
+  float: right;
+  font-size: 50px;
+  font-weight: bolder;
+  height: 1px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content-logout {
+  background-color: #fefefe00;
+  border: #fefefe00, 0px;
+}
+
+/* Daniel;s stuff:
+*/
+
+.profile-images {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+
+  margin-top: 25px;
+  margin-left: 45%;
+
+}
+
+.about-us-text {
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+}
+.about-us-text2 {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+.drink-photos {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  border: 0px;
+  margin-bottom: 150px;
+  text-align: center;
+  margin-left: 300px;
+  margin-top: 100px;
+  padding: 0%;
+}
+
+.drink-photosTOP {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  border: 0px;
+  margin-bottom: 100px;
+  text-align: center;
+  margin-left: 300px;
+  margin-top: 60px;
+  padding: 0%;
+}
+.dispense-text {
+  text-align: center;
+  margin-right: 500px;
+}
+
+.dispense-buttonTOP {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+}
+
+
+.dispense_coke {
+  width: 40%;
+  height: auto;
+  align-self: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.logout-button {
+  margin: 0%;
+  width: 100%;
+  height: 5em;
+  background-color: #ff5b42;
+  font-size: 1em;
+  color: #000;
+}
+
+.logout-button-div {
+  margin-top: 0%;
+  width:50%;
+  display: flex;
+  justify-content: center;
+}
+
+.create-drinks{
+  height: 30em;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.square-side{
+  height: 80%;
+  width: 30%;
+  display: block;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.button-side{
+  margin-right: 10%;
+  margin-top:5%;
+  height: 80%;
+  width: 30%;
+}
+
+.square{
+  height: 50%;
+  width: 100%;
+  background-color: #5f5f5f;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.top-text{
+  color: #000;
+  font-size: larger;
+}
+
+#dispenseOwnDrink{
+  height: 100%;
+  width: 100%;
+}
+
+.top-drink{
+  height: 50%;
+  width: 100%;
+}
+
+.bottom-drink{
+  height: 40%;
+  width: 100%;
+}
+
+.drink-opt-top{
+  margin-top: 1em;
+  width: 100%;
+}
+
+.flavor-opt-top{
+  margin-top: 1em;
+  width: 100%;
+}
+
+.drink-opt-bottom{
+  margin-top: 1em;
+  width: 100%;
+}
+
+.flavor-opt-bottom{
+  margin-top: 1em;
+  width: 100%;
+}
+
+.dispense-button{
+  width: 100%;
+  height: 10%;
+  background-color: pink;
+  border: none;
+  border-radius: 5px;
+  color: black;
+}
+
+.dispense-button:hover{
+  background-color: rgb(247, 166, 216);;
+  transition: 0.3s;
+  color: black;
 }

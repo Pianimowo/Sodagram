@@ -9,9 +9,394 @@
       <h1 class="band-name band-name-large">Sodagram</h1>
     </header>
 
-    
+    <button class="drink-photosTOP" id="loginBtn">
+      <img src="images/coke.jpg" alt="" class="dispense-buttonTOP" />
+    </button>
+    <button class="drink-photosTOP">
+      <img src="images/fanta.png" alt="" class="dispense-buttonTOP" />
+    </button>
+    <button class="drink-photos">
+      <img src="images/sprite.jpg" alt="" class="dispense-buttonTOP" />
+    </button>
+    <button class="drink-photos">
+      <img src="images/mtndew.jpg" alt="" class="dispense-buttonTOP" />
+    </button>
 
+    <div class="logout-button-div" style="margin-top: 2%; display: flex; justify-content: space-evenly; width: 100%;">
+      <button
+        type="button"
+        class="creation-button logout-button"
+        id="create-button"
+        style="margin-bottom: 20%; width: 50%;"
+      >
+        Create
+      </button>
+    </div>
+
+    <div id="createModal" class="modal">
+      <div class="modal-content">
+
+        <h1 class="dispense-text-modal">Build your own drink!</h1>
+
+        <div class="create-drinks">
+          <div class="square-side">
+            <div class="square" id="top-square">
+              <p id="top-text" class="top-text"></p>
+            </div>
+            <div class="square" id="bottom-square">
+              <p id="bottom-text" class="top-text"></p>
+            </div>
+          </div>
+
+          <div class="button-side">
+            <form action="/Drink" method="post" id="dispenseOwnDrink">
+              <div class="top-drink">
+                <label>Choose the top drink</label>
+                <select
+                  name="drink-opt-top"
+                  id="drink-opt-top"
+                  class="drink-opt-top"
+                >
+                  <option value="">Please choose an drink</option>
+                  <option value="Coke">Coke</option>
+                  <option value="MtnDew">Mountain Dew</option>
+                  <option value="Fanta">Fanta</option>
+                  <option value="Sprite">Sprite</option>
+                </select>
+                <select
+                  name="flavor-opt-top"
+                  id="flavor-opt-top"
+                  class="flavor-opt-top"
+                >
+                  <option value="">Please choose an flavor</option>
+                  <option value="Peach">Peach</option>
+                  <option value="Mango">Mango</option>
+                  <option value="Pineapple">Pineapple</option>
+                  <option value="Normal">Normal</option>
+                </select>
+              </div>
+              <div class="bottom-drink">
+                <label>Choose the bottom drink</label>
+                <select
+                  name="drink-opt-bottom"
+                  id="drink-opt-bottom"
+                  class="drink-opt-bottom"
+                >
+                  <option value="">Please choose an drink</option>
+                  <option value="Coke">Coke</option>
+                  <option value="MtnDew">Mountain Dew</option>
+                  <option value="Fanta">Fanta</option>
+                  <option value="Sprite">Sprite</option>
+                </select>
+                <select
+                  name="flavor-opt-bottom"
+                  id="flavor-opt-bottom"
+                  class="flavor-opt-bottom"
+                >
+                  <option value="">Please choose an flavor</option>
+                  <option value="Peach">Peach</option>
+                  <option value="Mango">Mango</option>
+                  <option value="Pineapple">Pineapple</option>
+                  <option value="Normal">Normal</option>
+                </select>
+              </div>
+              <button class="dispense-button" type="submit">Dispense!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+
+        <h1 class="dispense-text-modal">
+          Choose the flavor you want to dispense!
+        </h1>
+
+        <img
+          src="images/coke.jpg"
+          alt=""
+          class="dispense-buttonTOP dispense_coke"
+        />
+
+        <div class="dispense">
+          <form action="/Dispense1" method="post" id="dispensePeach">
+            <button type="submit" class="peach_dispense">Peach</button>
+          </form>
+
+          <form action="/Dispense2" method="post" id="dispenseMango">
+            <button type="submit" class="mango_dispense">Mango</button>
+          </form>
+
+          <form action="/Dispense3" method="post" id="dispensePineapple">
+            <button type="submit" class="pineapple_dispense">Pineapple</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="logoutModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content modal-content-logout">
+        <div class="logout-button-div">
+          <button
+            type="button"
+            class="creation-button logout-button"
+            id="logout-button"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
 
     <%- include('layouts/footer'); -%>
   </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the modals
+      var loginModal = document.getElementById("loginModal");
+      var createModal = document.getElementById("createModal");
+      var logoutModal = document.getElementById("logoutModal");
+
+      // Get the buttons that open the modals
+      var loginBtn = document.getElementById("loginBtn");
+      var createBtn = document.getElementById("create-button");
+      var logoutBtn = document.getElementById("account");
+
+      // Get the <span> elements that close the modals
+      var closeButtons = document.querySelectorAll(".modal .close");
+
+      // When the user clicks the button, open the modal
+      loginBtn.onclick = function () {
+        loginModal.style.display = "block";
+      };
+
+      createBtn.onclick = function () {
+        createModal.style.display = "block";
+      };
+
+      // Attach event listeners to each close button
+      closeButtons.forEach(function (button) {
+        button.onclick = function () {
+          button.closest(".modal").style.display = "none";
+        };
+      });
+
+      // When the user clicks anywhere outside of the modals, close them
+      window.onclick = function (event) {
+        if (event.target == loginModal) {
+          loginModal.style.display = "none";
+        }
+        if (event.target == createModal) {
+          createModal.style.display = "none";
+        }
+        if (event.target == logoutModal) {
+          logoutModal.style.display = "none";
+        }
+      };
+
+      document
+        .getElementById("dispensePeach")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          fetch("/Dispense1", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.alert(data.text);
+              loginModal.style.display = "none";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              document.getElementById("message").innerText =
+                "An error occurred";
+            });
+        });
+
+      document
+        .getElementById("dispenseMango")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          fetch("/Dispense2", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.alert(data.text);
+              loginModal.style.display = "none";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              document.getElementById("message").innerText =
+                "An error occurred";
+            });
+        });
+
+      document
+        .getElementById("dispensePineapple")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          fetch("/Dispense3", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.alert(data.text);
+              loginModal.style.display = "none";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              document.getElementById("message").innerText =
+                "An error occurred";
+            });
+        });
+
+      const token = localStorage.getItem("token");
+      if (token) {
+        document.getElementById("account").addEventListener("click", () => {
+          logoutModal.style.display = "block";
+        });
+        document.getElementById("create-button").style.display = "initial";
+      } else {
+        document.getElementById("account").addEventListener("click", () => {
+          window.location = "/Login.HTML";
+        });
+        document.getElementById("create-button").style.display = "none";
+      }
+
+      document.getElementById("logout-button").addEventListener("click", () => {
+        var txt;
+        if (confirm("Do you wish to logout?")) {
+          txt = "Yes";
+          localStorage.removeItem("token");
+          window.location = "/Index.HTML";
+        } else {
+          txt = "No";
+          modal.style.display = "none";
+        }
+      });
+
+      document
+        .querySelector(".flavor-opt-bottom")
+        .addEventListener("change", (event) => {
+          var flavours = document.querySelector(".flavor-opt-bottom").value;
+          console.log(flavours);
+          if (flavours === "Peach") {
+            document.getElementById("bottom-square").style.backgroundColor =
+              "#ffb0f8";
+          } else if (flavours === "Mango") {
+            document.getElementById("bottom-square").style.backgroundColor =
+              "#ffd2a2";
+          } else if (flavours === "Pineapple") {
+            document.getElementById("bottom-square").style.backgroundColor =
+              "#f7ffb0";
+          } else if (flavours === "Normal") {
+            document.getElementById("bottom-square").style.backgroundColor =
+              "#333";
+          }
+        });
+
+      document
+        .querySelector(".flavor-opt-top")
+        .addEventListener("change", (event) => {
+          var flavours = document.querySelector(".flavor-opt-top").value;
+          console.log(flavours);
+          if (flavours === "Peach") {
+            document.getElementById("top-square").style.backgroundColor =
+              "#ffb0f8";
+          } else if (flavours === "Mango") {
+            document.getElementById("top-square").style.backgroundColor =
+              "#ffd2a2";
+          } else if (flavours === "Pineapple") {
+            document.getElementById("top-square").style.backgroundColor =
+              "#f7ffb0";
+          } else if (flavours === "Normal") {
+            document.getElementById("top-square").style.backgroundColor =
+              "#333";
+          }
+        });
+
+      document
+        .querySelector(".drink-opt-bottom")
+        .addEventListener("change", (event) => {
+          var drinks = document.querySelector(".drink-opt-bottom").value;
+          console.log(drinks);
+          if (drinks === "Coke") {
+            document.getElementById("bottom-text").innerText = "Coke";
+          } else if (drinks === "MtnDew") {
+            document.getElementById("bottom-text").innerText = "Mountain Dew";
+          } else if (drinks === "Fanta") {
+            document.getElementById("bottom-text").innerText = "Fanta";
+          } else if (drinks === "Sprite") {
+            document.getElementById("bottom-text").innerText = "Sprite";
+          }
+        });
+
+      document
+        .querySelector(".drink-opt-top")
+        .addEventListener("change", (event) => {
+          var drinks = document.querySelector(".drink-opt-top").value;
+          console.log(drinks);
+          if (drinks === "Coke") {
+            document.getElementById("top-text").innerText = "Coke";
+          } else if (drinks === "MtnDew") {
+            document.getElementById("top-text").innerText = "Mountain Dew";
+          } else if (drinks === "Fanta") {
+            document.getElementById("top-text").innerText = "Fanta";
+          } else if (drinks === "Sprite") {
+            document.getElementById("top-text").innerText = "Sprite";
+          }
+        });
+
+      document
+        .getElementById("dispenseOwnDrink")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const topDrink = document.querySelector(".flavor-opt-top").value;
+          const topFlavour = document.querySelector(".flavor-opt-top").value;
+          const botDrink = document.querySelector(".drink-opt-bottom").value;
+          const botFlavour = document.querySelector(".flavor-opt-bottom").value;
+
+          fetch("/Drink", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              topDrink,
+              botDrink,
+              topFlavour,
+              botFlavour,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.alert(data.text);
+              createModal.style.display = "none";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    });
+  </script>
 </html>
