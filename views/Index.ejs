@@ -1,27 +1,31 @@
+<!-- Home page with all the drinks and creation dispensings -->
 <!DOCTYPE html>
 <html>
   <%- include('layouts/header'); -%>
 
   <body>
     <header class="main-header">
-      <!--Section provides heading/creates a box -->
       <%- include('layouts/nav'); -%>
       <h1 class="band-name band-name-large">Sodagram</h1>
     </header>
 
-    <button class="drink-photosTOP" id="loginBtn">
+
+    <!-- Creates the four images and buttons that is availible to the user to click and open up the dispensing menu -->
+    <button class="drink-photosTOP" id="loginBtn" type="button">
       <img src="images/coke.jpg" alt="" class="dispense-buttonTOP" />
     </button>
-    <button class="drink-photosTOP">
-      <img src="images/fanta.png" alt="" class="dispense-buttonTOP" />
+    <button class="drink-photosTOP" id="loginBtn" type="button">
+      <img src="images/unavailable.jpeg" alt="" class="dispense-buttonTOP" />
     </button>
-    <button class="drink-photos">
-      <img src="images/sprite.jpg" alt="" class="dispense-buttonTOP" />
+    <button class="drink-photos" id="loginBtn" type="button">
+      <img src="images/unavailable.jpeg" alt="" class="dispense-buttonTOP" />
     </button>
-    <button class="drink-photos">
-      <img src="images/mtndew.jpg" alt="" class="dispense-buttonTOP" />
+    <button class="drink-photos" id="loginBtn" type="button">
+      <img src="images/unavailable.jpeg" alt="" class="dispense-buttonTOP" />
     </button>
 
+
+    <!-- Creates the button underneath the preset drink option that opens the creative drink dispensing -->
     <div class="logout-button-div" style="margin-top: 2%; display: flex; justify-content: space-evenly; width: 100%;">
       <button
         type="button"
@@ -33,11 +37,14 @@
       </button>
     </div>
 
+
+    <!-- Building own drink popup Menu -->
     <div id="createModal" class="modal">
       <div class="modal-content">
 
         <h1 class="dispense-text-modal">Build your own drink!</h1>
 
+        <!-- Div for changing automatically with what the user chooses. Eg. If user chooses pineapple, the div color would be color yellow-->
         <div class="create-drinks">
           <div class="square-side">
             <div class="square" id="top-square">
@@ -48,10 +55,14 @@
             </div>
           </div>
 
+
+          <!-- Side with all the selection menus to choose the drinks -->
           <div class="button-side">
             <form action="/Drink" method="post" id="dispenseOwnDrink">
               <div class="top-drink">
                 <label>Choose the top drink</label>
+
+                <!-- Drink option for the top half -->
                 <select
                   name="drink-opt-top"
                   id="drink-opt-top"
@@ -63,6 +74,8 @@
                   <option value="Fanta">Fanta</option>
                   <option value="Sprite">Sprite</option>
                 </select>
+
+                <!-- Flavor option for the top half -->
                 <select
                   name="flavor-opt-top"
                   id="flavor-opt-top"
@@ -77,6 +90,7 @@
               </div>
               <div class="bottom-drink">
                 <label>Choose the bottom drink</label>
+                <!-- Drink option for the bottom half -->
                 <select
                   name="drink-opt-bottom"
                   id="drink-opt-bottom"
@@ -88,6 +102,7 @@
                   <option value="Fanta">Fanta</option>
                   <option value="Sprite">Sprite</option>
                 </select>
+                <!-- Flavor option for the bottom half -->
                 <select
                   name="flavor-opt-bottom"
                   id="flavor-opt-bottom"
@@ -100,6 +115,8 @@
                   <option value="Normal">Normal</option>
                 </select>
               </div>
+
+              <!-- Buttons which submits the form and sends the selections to the backend -->
               <button class="dispense-button" type="submit">Dispense!</button>
             </form>
           </div>
@@ -107,6 +124,7 @@
       </div>
     </div>
 
+    <!-- The popup menu which enables the normal drink choosing mode -->
     <div id="loginModal" class="modal">
       <div class="modal-content">
 
@@ -120,15 +138,20 @@
           class="dispense-buttonTOP dispense_coke"
         />
 
+        
         <div class="dispense">
+
+          <!-- Button for choosing the peach dispensing option -->
           <form action="/Dispense1" method="post" id="dispensePeach">
             <button type="submit" class="peach_dispense">Peach</button>
           </form>
 
+          <!-- Button for choosing the mango dispensing option -->
           <form action="/Dispense2" method="post" id="dispenseMango">
             <button type="submit" class="mango_dispense">Mango</button>
           </form>
 
+          <!-- Button for choosing the pineapple dispensing option -->
           <form action="/Dispense3" method="post" id="dispensePineapple">
             <button type="submit" class="pineapple_dispense">Pineapple</button>
           </form>
@@ -136,8 +159,9 @@
       </div>
     </div>
 
+
+    <!-- Opens the popup menu to log one out after pressing the Profile button while logged in -->
     <div id="logoutModal" class="modal">
-      <!-- Modal content -->
       <div class="modal-content modal-content-logout">
         <div class="logout-button-div">
           <button
@@ -155,21 +179,23 @@
   </body>
 
   <script>
+
+    // Listening to the server end for outputs from the main page 
     document.addEventListener("DOMContentLoaded", function () {
-      // Get the modals
+      // Get the popup menus
       var loginModal = document.getElementById("loginModal");
       var createModal = document.getElementById("createModal");
       var logoutModal = document.getElementById("logoutModal");
 
-      // Get the buttons that open the modals
+      // Get the buttons that open the popup menus
       var loginBtn = document.getElementById("loginBtn");
       var createBtn = document.getElementById("create-button");
       var logoutBtn = document.getElementById("account");
 
-      // Get the <span> elements that close the modals
+      // Get the <span> elements that close the popup menus
       var closeButtons = document.querySelectorAll(".modal .close");
 
-      // When the user clicks the button, open the modal
+      // When the user clicks the buttons, open their selective popup menu
       loginBtn.onclick = function () {
         loginModal.style.display = "block";
       };
@@ -178,14 +204,14 @@
         createModal.style.display = "block";
       };
 
-      // Attach event listeners to each close button
+      // Add event listeners to the close button to close the popup menu
       closeButtons.forEach(function (button) {
         button.onclick = function () {
           button.closest(".modal").style.display = "none";
         };
       });
 
-      // When the user clicks anywhere outside of the modals, close them
+      // When the user clicks anywhere outside of the popup menu, close them
       window.onclick = function (event) {
         if (event.target == loginModal) {
           loginModal.style.display = "none";
@@ -198,11 +224,16 @@
         }
       };
 
+
+      //Listen to backend and the main page for the dispense peach form
       document
         .getElementById("dispensePeach")
         .addEventListener("submit", function (event) {
+
+          //Prevents the res to go to the html page
           event.preventDefault();
 
+          //Recieves the information from the backend
           fetch("/Dispense1", {
             method: "POST",
             headers: {
@@ -212,21 +243,28 @@
           })
             .then((response) => response.json())
             .then((data) => {
+
+              //Displays to the user that the drink is being dispensed 
               window.alert(data.text);
+
+              //Closes the drink dispensing popup menu
               loginModal.style.display = "none";
             })
             .catch((error) => {
               console.error("Error:", error);
-              document.getElementById("message").innerText =
-                "An error occurred";
             });
         });
 
+
+      //Listen to backend and the main page for the dispense Mango form
       document
         .getElementById("dispenseMango")
         .addEventListener("submit", function (event) {
+
+          //Prevents the res to go to the html page
           event.preventDefault();
 
+          //Recieves the information from the backend
           fetch("/Dispense2", {
             method: "POST",
             headers: {
@@ -236,21 +274,28 @@
           })
             .then((response) => response.json())
             .then((data) => {
+
+              //Displays to the user that the drink is being dispensed 
               window.alert(data.text);
+
+              //Closes the drink dispensing popup menu
               loginModal.style.display = "none";
             })
             .catch((error) => {
               console.error("Error:", error);
-              document.getElementById("message").innerText =
-                "An error occurred";
             });
         });
 
+
+      //Listen to backend and the main page for the dispense Pineapple form
       document
         .getElementById("dispensePineapple")
         .addEventListener("submit", function (event) {
+
+          //Prevents the res to go to the html page
           event.preventDefault();
 
+          //Recieves the information from the backend
           fetch("/Dispense3", {
             method: "POST",
             headers: {
@@ -260,44 +305,72 @@
           })
             .then((response) => response.json())
             .then((data) => {
+
+              //Displays to the user that the drink is being dispensed 
               window.alert(data.text);
+
+              //Closes the drink dispensing popup menu
               loginModal.style.display = "none";
             })
             .catch((error) => {
               console.error("Error:", error);
-              document.getElementById("message").innerText =
-                "An error occurred";
             });
         });
 
+
+      //Checks to see if the user is logged in with a token
       const token = localStorage.getItem("token");
       if (token) {
+        //If logged in: 
+
+        //Sets the profile image that once clicked, displays the logout button
         document.getElementById("account").addEventListener("click", () => {
           logoutModal.style.display = "block";
         });
+
+        //Sets the create a drink button to visible and able to be clicked on
         document.getElementById("create-button").style.display = "initial";
       } else {
+        //If not logged in:
+
+        //Sets the profile image that once clicked, redirects to the login screen
         document.getElementById("account").addEventListener("click", () => {
           window.location = "/Login.HTML";
         });
+
+        //Sets the create drink button to not visible and not be able to clicked on
         document.getElementById("create-button").style.display = "none";
       }
 
+
+      //Gets the listener for logout button
       document.getElementById("logout-button").addEventListener("click", () => {
         var txt;
+
+        //Once clicked, open a prompt menu confirming the log out
         if (confirm("Do you wish to logout?")) {
           txt = "Yes";
+
+          //if clicked yes, remove the token and return to home
           localStorage.removeItem("token");
           window.location = "/Index.HTML";
         } else {
+
+          //If clicked no, click off of the menu
           txt = "No";
           modal.style.display = "none";
         }
       });
 
+
+      //Add a listener for each of the select menus in the create menu
+
+      //Added one for the flavor bottom
       document
         .querySelector(".flavor-opt-bottom")
         .addEventListener("change", (event) => {
+
+          //Listens to the selection of the select menu and matches the color of the div on the left to match the flavor
           var flavours = document.querySelector(".flavor-opt-bottom").value;
           console.log(flavours);
           if (flavours === "Peach") {
@@ -315,9 +388,13 @@
           }
         });
 
+
+      //Added one for the flavor top
       document
         .querySelector(".flavor-opt-top")
         .addEventListener("change", (event) => {
+
+          //Listens to the selection of the select menu and matches the color of the div on the left to match the flavor
           var flavours = document.querySelector(".flavor-opt-top").value;
           console.log(flavours);
           if (flavours === "Peach") {
@@ -335,9 +412,12 @@
           }
         });
 
+      //Added one for the drink bottom
       document
         .querySelector(".drink-opt-bottom")
         .addEventListener("change", (event) => {
+
+          //Listens to the selection of the select menu and matches the text of the div on the left to match the drink
           var drinks = document.querySelector(".drink-opt-bottom").value;
           console.log(drinks);
           if (drinks === "Coke") {
@@ -351,9 +431,13 @@
           }
         });
 
+
+      //Added one for the drink top
       document
         .querySelector(".drink-opt-top")
         .addEventListener("change", (event) => {
+
+          //Listens to the selection of the select menu and matches the text of the div on the left to match the drink
           var drinks = document.querySelector(".drink-opt-top").value;
           console.log(drinks);
           if (drinks === "Coke") {
@@ -367,15 +451,20 @@
           }
         });
 
+
+      //Listen to backend and the main page for the drink creation form
       document
         .getElementById("dispenseOwnDrink")
         .addEventListener("submit", function (event) {
+
+          //Prevents the res to go to the html page
           event.preventDefault();
           const topDrink = document.querySelector(".flavor-opt-top").value;
           const topFlavour = document.querySelector(".flavor-opt-top").value;
           const botDrink = document.querySelector(".drink-opt-bottom").value;
           const botFlavour = document.querySelector(".flavor-opt-bottom").value;
 
+          //Recieves the information from the backend
           fetch("/Drink", {
             method: "POST",
             headers: {
@@ -390,7 +479,11 @@
           })
             .then((response) => response.json())
             .then((data) => {
+
+              //Displays to the user that the drink is being dispensed 
               window.alert(data.text);
+
+              //Closes the creationg popup menu
               createModal.style.display = "none";
             })
             .catch((error) => {

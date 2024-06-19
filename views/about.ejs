@@ -91,34 +91,55 @@
   </body>
 
   <script>
+
+    // Get the popup menu
     var logoutModal = document.getElementById("logoutModal");
+
+    // Get the Logout button
     var logoutBtn = document.getElementById("account");
 
+    // When the user clicks anywhere outside of the popup menu, close it
     window.onclick = function (event) {
       if (event.target == logoutModal) {
         logoutModal.style.display = "none";
       }
     };
 
+    //Checks to see if the user is logged in with a token
     const token = localStorage.getItem("token");
     if (token) {
+
+      //If logged in: 
+
+      //Sets the profile image that once clicked, displays the logout button
       document.getElementById("account").addEventListener("click", () => {
         logoutModal.style.display = "block";
       });
     } else {
+
+      //If not logged in:
+
+      //Sets the profile image that once clicked, redirects to the login screen
       document.getElementById("account").addEventListener("click", () => {
         window.location = "/Login.HTML";
       });
     }
 
+    //Gets the listener for logout button
     document.getElementById("logout-button").addEventListener("click", () => {
       var txt;
+
+      //Once clicked, open a prompt menu confirming the log out
       if (confirm("Do you wish to logout?")) {
         txt = "Yes";
+
+        //if clicked yes, remove the token and return to home
         localStorage.removeItem("token");
         window.location = "/Index.HTML";
       } else {
         txt = "No";
+
+        //If clicked no, click off of the menu
         logoutModal.style.display = "none";
       }
     });

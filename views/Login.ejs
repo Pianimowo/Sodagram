@@ -1,3 +1,4 @@
+<!-- Login Page for Logining in to accounts -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="public/css/styles.css" />
   </head>
 
+  <!-- Login Container -->
   <body>
     <div class="login-container">
       <ul class="login-ul">
@@ -14,6 +16,8 @@
           <div class="login-menu">
             <h2 class="Login-text-big">Login</h2>
             <div class="Input-boxes">
+
+              <!-- Email input box -->
               <h4 class="Login-text">Email</h4>
               <input
                 type="text"
@@ -24,6 +28,7 @@
               />
             </div>
 
+            <!-- Password input box -->
             <div class="Input-boxes">
               <h4 class="Login-text">Password</h4>
               <input
@@ -33,11 +38,17 @@
                 id="password"
               />
             </div>
+
+            <!-- Entering and submitting the info -->
             <div>
               <button class="Login-button" type="submit">Enter</button>
             </div>
           </div>
         </form>
+
+        <!-- Different options -->
+
+        <!-- Create a new account -->
         <div>
           <a href="Creation.html"
             ><button type="button" class="creation-button" id="create-button">
@@ -45,6 +56,8 @@
             </button></a
           >
         </div>
+
+        <!-- Returning to the mainpage without loggining in -->
         <div>
           <a href="Index.html"
             ><button type="button" class="creation-button" id="guest-button">
@@ -52,21 +65,26 @@
             </button></a
           >
         </div>
-        <div id="message"></div>
-        <div id="protectedMessage"></div>
       </ul>
     </div>
 
     <%- include('layouts/footer'); -%>
 
     <script>
+
+      // Listening to the server end for outputs from the login 
       document
         .getElementById("loginForm")
         .addEventListener("submit", function (event) {
+
+          //Prevents the res to go to the html page
           event.preventDefault();
+
+
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
 
+          //Recieves the information from the backend
           fetch("/Login", {
             method: "POST",
             headers: {
@@ -76,16 +94,16 @@
           })
             .then((response) => response.json())
             .then((data) => {
-              document.getElementById("message").innerText = data.text;
+
+              //If there is a token, means that the user is successfully logged in
               if (data.token) {
                 localStorage.setItem("token", data.token);
+                //Changes the window to the home page
                 window.location = "/Index.HTML";
               }
             })
             .catch((error) => {
               console.error("Error:", error);
-              document.getElementById("message").innerText =
-                "An error occurred";
             });
         });
     </script>

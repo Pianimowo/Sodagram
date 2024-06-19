@@ -1,24 +1,28 @@
+//Connecting the server
 const express = require("express");
 const path = require("path");
 const app = express();
 const port = 3000;
 
+//Brings in the URI code from the .env file
 require("dotenv").config({ path: ".env" });
 
+//Setting up the database
 const uri = process.env.URI;
 const mongoose = require("mongoose");
 const Accounts = require("./Models/Account");
 
+//Connecting the middleware
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Getting the token for logins and logouts
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cors = require("cors");
-
 const SECRET_KEY = "Boo";
 
+//Connecting to database
 async function connect() {
   try {
     await mongoose.connect(uri);
@@ -27,14 +31,16 @@ async function connect() {
     console.log(error);
   }
 }
-
 connect();
 
+
+//Setting up the server
 app.set("view engine", "ejs");
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", require("ejs").__express);
 
+//Connecting the front end
 app.get("/", (req, res) => {
   res.render("Index");
 });
@@ -60,7 +66,6 @@ app.get("/Creation.HTML", (req, res) => {
 });
 
 
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
@@ -68,6 +73,9 @@ app.listen(port, () => {
 
 
 
+//Post actions:
+
+//Login posting
 app.post("/Login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -93,6 +101,9 @@ app.post("/Login", (req, res) => {
     });
 });
 
+
+
+//Account creation posting
 app.post("/Create", (req, res) => {
   const firstName = req.body.first_name;
   const lastName = req.body.last_name;
@@ -121,6 +132,8 @@ app.post("/Create", (req, res) => {
   }
 });
 
+
+//Normal drink dispensing post
 app.post("/Dispense1", (req, res) => {
   res.json({ text: "Your drink is being Dispensed!" });
 });
@@ -134,6 +147,7 @@ app.post("/Dispense3", (req, res) => {
 });
 
 
+//Half and half drink posting
 app.post("/Drink", (req, res) => {
   console.log(req);
   const topDrink = req.body.topDrink;

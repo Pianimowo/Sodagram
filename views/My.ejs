@@ -1,10 +1,13 @@
+<!-- Page no longer included as did not see the need to have this page. -->
+
 <!DOCTYPE html>
 <html>
   <%- include('layouts/header'); -%>
 
   <body>
+
+    <!-- Header -->
     <header class="main-header">
-      <!--Section provides heading/creates a box -->
       <%- include('layouts/nav'); -%>
       <h1 class="band-name band-name-large">Sodagram</h1>
     </header>
@@ -19,14 +22,15 @@
       </button>
     </div>
 
-    <!-- The Modal -->
+    <!-- Building own drink popup Menu -->
     <div id="createModal" class="modal">
-      <!-- Modal content -->
+      
       <div class="modal-content">
         <span class="close">&times;</span>
 
         <h1 class="dispense-text-modal">Build your own drink!</h1>
 
+        <!-- Div for changing automatically with what the user chooses -->
         <div class="create-drinks">
           <div class="square-side">
             <div class="square" id="top-square">

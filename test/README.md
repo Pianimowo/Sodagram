@@ -1,0 +1,1 @@
+These documents were used to test the server end and learning MangoDB syntax

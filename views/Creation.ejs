@@ -56,7 +56,11 @@
         <%- include('layouts/footer'); -%>
     </body>
     <script>
+
+        //Listen to backend and the main page for the creation form
         document.getElementById("creationForm").addEventListener("submit", (event) => {
+            
+            //Prevents the res to go to the html page
             event.preventDefault();
 
             const password1 = document.getElementById("password1").value;
@@ -66,6 +70,7 @@
             const email = document.getElementById("email").value;
             console.log("HEllo");
 
+            //Only if the two passwords equal, and email is not blank, Recieves the information from the backend
             if (password1 === password2 && email!=""){
                 fetch('/Create', {
                     method: 'POST',
@@ -77,16 +82,22 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.text === "Account created!"){
+
+                        //If account has been created, alert the user and return to login screen to login
                         window.alert("Account Created! Please login with your new account!");
                         window.location = "/Login.HTML";
                     }
                     else{
+
+                        //If account has not been created, meand that the email already existed, prompts the user to login
                         window.alert("Email already in use! Please try logging in");
                         window.location = "/Login.HTML";
                     }
                 })
             }
             else{
+
+                //if the passwords dont match
                 fetch('/Create', {
                     method: 'POST',
                     headers: {
@@ -96,6 +107,8 @@
                 })
                 .then(response => response.json())
                 .then(data => {
+
+                    //Alert the user that that the passwords don't match, clears the passwords to try again
                     window.alert("The two passwords do not match or invalid email! Please try again");
                     document.getElementById("password1").value = "";
                     document.getElementById("password2").value = "";
